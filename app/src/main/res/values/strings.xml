@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name"> Mi Horario 6IM6 </string>
+    <string name="accept"> Aceptar </string>
+
+    <string-array name="dias_semana">
+        <item> Lunes </item>
+        <item> Martes </item>
+        <item> Miércoles </item>
+        <item> Jueves </item>
+        <item> Viernes </item>
+    </string-array>
+
+    <string-array name="dias_semana_valores">
+        <item> 1 </item>
+        <item> 2 </item>
+        <item> 3 </item>
+        <item> 4 </item>
+        <item> 5 </item>
+    </string-array>
+</resources>
