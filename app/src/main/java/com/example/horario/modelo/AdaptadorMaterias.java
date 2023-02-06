@@ -3,13 +3,12 @@ package com.example.horario.modelo;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -26,16 +25,25 @@ public class AdaptadorMaterias extends RecyclerView.Adapter<AdaptadorMaterias.Vi
     private final LayoutInflater inflater;
     private final List<Materia> lista;
     private static Resources res;
+    private int anim_delay;
 
     public AdaptadorMaterias( Context context, List<Materia> lista ) {
         this.lista = lista;
         inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+
+        anim_delay = 0;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = inflater.inflate( R.layout.elemento_lista, parent, false );
+        Animation anim = AnimationUtils.loadAnimation( v.getContext(), R.anim.animacion_lista );
+
+        anim_delay += 100;
+
+        anim.setStartOffset( anim_delay );
+        v.startAnimation( anim );
         return new ViewHolder( v );
     }
 
@@ -49,7 +57,8 @@ public class AdaptadorMaterias extends RecyclerView.Adapter<AdaptadorMaterias.Vi
         return lista.size();
     }
 
-    /** @author Mendoza Castañeda José Ricardo.
+    /**
+     * @author Mendoza Castañeda José Ricardo.
      * */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nombre, salon, hora;
